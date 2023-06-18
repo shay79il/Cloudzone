@@ -1,0 +1,16 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "sample-website",
+            "image": "${image_name}",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": "${host_port}",
+                    "protocol": "tcp",
+                    "containerPort": "${container_port}"
+                }
+            ]
+        }
+    ]
+}

@@ -269,7 +269,7 @@ variable "image_name" {
 variable "ecs_container_port" {
   description = "Listen container port"
   type        = number
-  default     = 5000
+  default     = 80
 }
 
 variable "ecs_container_cpu" {

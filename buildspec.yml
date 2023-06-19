@@ -8,7 +8,7 @@ phases:
     #         - sudo ./aws/install
     pre_build:
         commands:
-            - aws ecr get-login-password --region us-east-1 #| docker login --username AWS --password-stdin 791073934047.dkr.ecr.us-east-1.amazonaws.com/cloudzone-lab
+            - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 791073934047.dkr.ecr.us-east-1.amazonaws.com/cloudzone-lab
     build:
         commands:
             - echo "Build started on `date`"

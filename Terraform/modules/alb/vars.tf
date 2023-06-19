@@ -25,7 +25,7 @@ variable "tg_ecs_fargate_protocol" {
 }
 
 variable "tg_ecs_tg_type" {
-  type    = string
+  type = string
 
   description = "Target Group type for ECS-Fargate"
 }

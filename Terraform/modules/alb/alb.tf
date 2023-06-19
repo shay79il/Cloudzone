@@ -11,7 +11,7 @@ resource "aws_lb" "application" {
     Name        = "ALB"
     Description = "ALB for the ECS"
   }
-  
+
   lifecycle {
     create_before_destroy = true
   }

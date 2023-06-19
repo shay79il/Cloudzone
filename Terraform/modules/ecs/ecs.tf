@@ -42,7 +42,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
 
 # Create ECS service
 resource "aws_ecs_service" "my_service" {
-  name            = "web-server-servic"
+  name            = "ecs-servic"
   cluster         = aws_ecs_cluster.this.name
   task_definition = aws_ecs_task_definition.my_task_definition.arn
   desired_count   = var.desired_count
@@ -55,7 +55,7 @@ resource "aws_ecs_service" "my_service" {
   load_balancer {
     target_group_arn = var.tg_ecs_fargate_arn
     container_name   = var.image_name
-    container_port   = 5000 
+    container_port   = var.container_port 
   }
 
   tags = {

@@ -10,7 +10,7 @@ phases:
         commands:
             - echo "Build started on `date`"
             - pwd
-            - cd  CodeBuild/CICD/dockerImage
+            - cd  CICD/dockerImage
             - docker image build -t 791073934047.dkr.ecr.us-east-1.amazonaws.com/cloudzone-lab:latest .
     post_build:
         commands:

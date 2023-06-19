@@ -289,3 +289,9 @@ variable "ecs_service_desired_count" {
   type        = number
   default     = 2
 }
+
+variable "launch_type" {
+  description = "ECS launch type"
+  type        = string
+  default     = "FARGATE"
+}

@@ -48,6 +48,10 @@ variable "desired_count" {
   description = "ECS service number of containers to deploy"
   type        = number
 }
+variable "launch_type" {
+  type        = string
+  description = "ECS launch type"
+}
 
 variable "private_subnet_ids" {
   type        = list(string)

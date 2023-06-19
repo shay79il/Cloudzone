@@ -54,22 +54,23 @@ module "ecr" {
 module "ecs" {
   source = "../modules/ecs"
 
-  env                = var.env
-  aws_account_id     = var.aws_account_id
+  env            = var.env
+  aws_account_id = var.aws_account_id
 
   # aws_ecs_task_definition
-  image_arn          = local.ecs_image_name
+  image_arn = local.ecs_image_name
   # host_port          = var.ecs_host_port #TODO - remove host_port?
-  image_name         = var.image_name
-  container_port     = var.ecs_container_port
-  cpu                = var.ecs_container_cpu
-  memory             = var.ecs_container_memory
+  image_name     = var.image_name
+  container_port = var.ecs_container_port
+  cpu            = var.ecs_container_cpu
+  memory         = var.ecs_container_memory
 
   # aws_ecs_service
-  private_subnet_ids  = module.vpc.private_subnet_ids
-  security_group_ids  = [module.sg.sg_id_ecs]
+  private_subnet_ids = module.vpc.private_subnet_ids
+  security_group_ids = [module.sg.sg_id_ecs]
   tg_ecs_fargate_arn = module.alb.tg_ecs_fargate_arn
   desired_count      = var.ecs_service_desired_count
+  launch_type        = var.launch_type
 
   depends_on = [module.alb]
 

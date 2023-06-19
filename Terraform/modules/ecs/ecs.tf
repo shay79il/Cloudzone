@@ -46,16 +46,18 @@ resource "aws_ecs_service" "my_service" {
   cluster         = aws_ecs_cluster.this.name
   task_definition = aws_ecs_task_definition.my_task_definition.arn
   desired_count   = var.desired_count
+  launch_type     = var.launch_type
+
 
   network_configuration {
-    subnets =  var.private_subnet_ids
+    subnets         = var.private_subnet_ids
     security_groups = var.security_group_ids
   }
 
   load_balancer {
     target_group_arn = var.tg_ecs_fargate_arn
     container_name   = var.image_name
-    container_port   = var.container_port 
+    container_port   = var.container_port
   }
 
   tags = {

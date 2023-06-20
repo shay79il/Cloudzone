@@ -13,6 +13,16 @@ resource "aws_ecs_cluster" "this" {
 
 
 # Create ECS task definition
+# # ERROR
+# Task stopped at: 6/19/2023, 19:52:49 UTC
+# ResourceInitializationError: unable to pull secrets or registry auth: execution resource retrieval failed: unable to retrieve ecr registry auth: service call has been retried 3 time(s): RequestError: send request failed caused by: Post "https://api.ecr.us-east-1.amazonaws.com/": dial tcp 44.213.79.86:443: i/o timeout. Please check your task network configuration.
+
+# Direction
+# - https://repost.aws/knowledge-center/ecs-tasks-pull-images-ecr-repository
+# - SG
+# - VPC Endpoing
+# - RT
+
 resource "aws_ecs_task_definition" "my_task_definition" {
   family                   = "cloudzone-task"
   requires_compatibilities = ["FARGATE"]

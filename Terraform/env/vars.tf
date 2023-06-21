@@ -35,6 +35,40 @@ variable "env" {
   description = "Environment name"
 }
 
+# IAM module variables
+########################
+
+variable "effect" {
+  type        = string
+  default     = "Allow"
+  description = "IAM policy effect"
+}
+variable "actions" {
+  type        = list(string)
+  default     = ["sts:AssumeRole"]
+  description = "IAM policy effect"
+}
+variable "principal_type" {
+  type        = string
+  default     = "Service"
+  description = "IAM principal type"
+}
+
+variable "principal_identifiers" {
+  type        = list(string)
+  default     = ["ecs-tasks.amazonaws.com"]
+  description = "IAM policy principal identifiers"
+}
+variable "role_name" {
+  type        = string
+  default     = "ECSTaskExecuteRole"
+  description = "IAM role name"
+}
+variable "policy_arn" {
+  type        = string
+  default     = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+  description = "IAM policy arn for attachment"
+}
 
 # VPC module vars
 ###################
@@ -248,6 +282,7 @@ variable "private_dns_enabled" {
 
 # ECS module variables
 ########################
+# TODO Remove START
 locals {
   ecs_image_name = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/${var.image_name}:latest"
 }
@@ -259,6 +294,7 @@ locals {
 #   type        = number
 #   default     = 80
 # }
+# TODO Remove END
 
 variable "image_name" {
   description = "Name of the docker image"

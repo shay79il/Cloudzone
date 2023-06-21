@@ -1,3 +1,14 @@
+module "iam" {
+  source = "../modules/iam"
+
+  effect                = var.effect
+  actions               = var.actions
+  principal_type        = var.principal_type
+  principal_identifiers = var.principal_identifiers
+  role_name             = var.role_name
+  policy_arn            = var.policy_arn
+}
+
 module "vpc" {
   source = "../modules/vpc"
 
@@ -56,10 +67,13 @@ module "ecs" {
 
   env            = var.env
   aws_account_id = var.aws_account_id
+  execution_role_arn = module.iam.aws_iam_role_arn
 
+  # TODO Remove START
   # aws_ecs_task_definition
   image_arn = local.ecs_image_name
   # host_port          = var.ecs_host_port #TODO - remove host_port?
+  # TODO Remove END
   image_name     = var.image_name
   container_port = var.ecs_container_port
   cpu            = var.ecs_container_cpu

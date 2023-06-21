@@ -1,6 +1,4 @@
-locals {
-  execution_role_arn = "arn:aws:iam::${var.aws_account_id}:role/ecsTaskExecutionRole"
-}
+
 
 resource "aws_ecs_cluster" "this" {
   name = "cloudzone-ecs-cluster"
@@ -26,7 +24,7 @@ resource "aws_ecs_cluster" "this" {
 resource "aws_ecs_task_definition" "my_task_definition" {
   family                   = "cloudzone-task"
   requires_compatibilities = ["FARGATE"]
-  execution_role_arn       = local.execution_role_arn
+  execution_role_arn       = var.execution_role_arn
   network_mode             = "awsvpc"
   cpu                      = var.cpu
   memory                   = var.memory

@@ -2,6 +2,10 @@ variable "env" {
   type        = string
   description = "Environment name"
 }
+variable "execution_role_arn" {
+  type        = string
+  description = "Execution Role ARN"
+}
 
 variable "aws_account_id" {
   description = "AWS account ID"
@@ -17,17 +21,6 @@ variable "image_name" {
   description = "Name of the docker image"
   type        = string
 }
-
-#TODO - remove host_port?
-# variable "host_port" {
-#   description = "Host port where the docker container runs"
-#   type        = number
-# }
-
-# variable "container_name" {
-#   description = "Container Name"
-#   type        = string
-# }
 
 variable "container_port" {
   description = "Listen container port"

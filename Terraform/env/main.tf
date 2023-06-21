@@ -66,14 +66,10 @@ module "ecs" {
   source = "../modules/ecs"
 
   env            = var.env
+  region         = var.region 
   aws_account_id = var.aws_account_id
   execution_role_arn = module.iam.aws_iam_role_arn
 
-  # TODO Remove START
-  # aws_ecs_task_definition
-  image_arn = local.ecs_image_name
-  # host_port          = var.ecs_host_port #TODO - remove host_port?
-  # TODO Remove END
   image_name     = var.image_name
   container_port = var.ecs_container_port
   cpu            = var.ecs_container_cpu

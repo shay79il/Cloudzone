@@ -2,6 +2,13 @@ variable "env" {
   type        = string
   description = "Environment name"
 }
+
+variable "region" {
+  type    = string
+
+  description = "AWS region"
+}
+
 variable "execution_role_arn" {
   type        = string
   description = "Execution Role ARN"
@@ -9,11 +16,6 @@ variable "execution_role_arn" {
 
 variable "aws_account_id" {
   description = "AWS account ID"
-  type        = string
-}
-
-variable "image_arn" {
-  description = "ARN of the docker image"
   type        = string
 }
 

@@ -1,4 +1,6 @@
-
+locals {
+  image_arn = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/${var.image_name}:latest"
+}
 
 resource "aws_ecs_cluster" "this" {
   name = "cloudzone-ecs-cluster"
@@ -31,11 +33,10 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   container_definitions = jsonencode([
     {
       name      = var.image_name
-      image     = var.image_arn
+      image     = local.image_arn
       essential = true
       portMappings = [
         {
-          # hostPort      = var.host_port #TODO - remove hostPort?
           containerPort = var.container_port
         }
       ]

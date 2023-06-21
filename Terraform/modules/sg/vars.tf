@@ -2,6 +2,10 @@ variable "vpc_id" {
   type        = string
   description = "AWS VPC ID"
 }
+variable "vpc_cidr_block" {
+  description = "VPC CIDR Block"
+  type        = string
+}
 
 variable "alb_sg_ingress" {
   type = list(object({

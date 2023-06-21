@@ -26,6 +26,7 @@ module "sg" {
   source = "../modules/sg"
 
   vpc_id         = module.vpc.vpc_id
+  vpc_cidr_block = var.vpc_cidr_block
   alb_sg_ingress = var.alb_sg_ingress
   alb_sg_egress  = var.alb_sg_egress
   ecs_sg_ingress = var.ecs_sg_ingress

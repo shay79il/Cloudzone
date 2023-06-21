@@ -48,6 +48,16 @@ resource "aws_security_group" "ecs" {
       from_port       = ingress.value.from_port
       to_port         = ingress.value.to_port
       protocol        = ingress.value.protocol
+      cidr_blocks     = [var.vpc_cidr_block]
+    }
+  }
+  dynamic "ingress" {
+    for_each = { for i, v in var.ecs_sg_ingress : i => v }
+    content {
+      description     = ingress.value.description
+      from_port       = ingress.value.from_port
+      to_port         = ingress.value.to_port
+      protocol        = ingress.value.protocol
       security_groups = [aws_security_group.alb.id]
     }
   }

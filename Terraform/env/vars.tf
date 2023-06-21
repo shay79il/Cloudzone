@@ -187,9 +187,15 @@ variable "ecs_sg_ingress" {
 
   default = [
     {
-      "description" = "Allow traffic from load balancer",
+      "description" = "Allow HTTP traffic from load balancer",
       "from_port"   = 80,
       "to_port"     = 80,
+      "protocol"    = "tcp"
+    },
+    {
+      "description" = "Allow HTTPS traffic from load balancer",
+      "from_port"   = 443,
+      "to_port"     = 443,
       "protocol"    = "tcp"
     }
   ]
@@ -282,20 +288,6 @@ variable "private_dns_enabled" {
 
 # ECS module variables
 ########################
-# TODO Remove START
-locals {
-  ecs_image_name = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/${var.image_name}:latest"
-}
-
-
-#TODO - remove ecs_host_port?
-# variable "ecs_host_port" {
-#   description = "Host port where the docker container runs"
-#   type        = number
-#   default     = 80
-# }
-# TODO Remove END
-
 variable "image_name" {
   description = "Name of the docker image"
   type        = string

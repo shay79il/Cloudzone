@@ -23,7 +23,7 @@ resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    Name = "PrivateRT"
+    Name        = "PrivateRT"
     Description = "Private route table for ${var.env} environment"
   }
 }

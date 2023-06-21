@@ -66,9 +66,9 @@ module "ecr" {
 module "ecs" {
   source = "../modules/ecs"
 
-  env            = var.env
-  region         = var.region 
-  aws_account_id = var.aws_account_id
+  env                = var.env
+  region             = var.region
+  aws_account_id     = var.aws_account_id
   execution_role_arn = module.iam.aws_iam_role_arn
 
   image_name     = var.image_name

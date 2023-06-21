@@ -41,21 +41,26 @@ resource "aws_security_group" "ecs" {
   description = "Allow traffic for ECS"
   vpc_id      = var.vpc_id
 
-  ingress {
-
-    description     = var.ecs_sg_ingress[0].description
-    from_port       = var.ecs_sg_ingress[0].from_port
-    to_port         = var.ecs_sg_ingress[0].to_port
-    protocol        = var.ecs_sg_ingress[0].protocol
-    security_groups = [aws_security_group.alb.id]
+  dynamic "ingress" {
+    for_each = { for i, v in var.ecs_sg_ingress : i => v }
+    content {
+      description     = ingress.value.description
+      from_port       = ingress.value.from_port
+      to_port         = ingress.value.to_port
+      protocol        = ingress.value.protocol
+      security_groups = [aws_security_group.alb.id]
+    }
   }
 
-  egress {
-    description     = var.ecs_sg_egress[0].description
-    from_port       = var.ecs_sg_egress[0].from_port
-    to_port         = var.ecs_sg_egress[0].to_port
-    protocol        = var.ecs_sg_egress[0].protocol
-    security_groups = [aws_security_group.alb.id]
+  dynamic "egress" {
+    for_each = { for i, v in var.ecs_sg_egress : i => v }
+    content {
+      description     = egress.value.description
+      from_port       = egress.value.from_port
+      to_port         = egress.value.to_port
+      protocol        = egress.value.protocol
+      security_groups = [aws_security_group.alb.id]
+    }
   }
 
 

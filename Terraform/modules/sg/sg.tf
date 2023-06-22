@@ -65,11 +65,11 @@ resource "aws_security_group" "ecs" {
   dynamic "egress" {
     for_each = { for i, v in var.ecs_sg_egress : i => v }
     content {
-      description     = egress.value.description
-      from_port       = egress.value.from_port
-      to_port         = egress.value.to_port
-      protocol        = egress.value.protocol
-      security_groups = [aws_security_group.alb.id]
+      description = egress.value.description
+      from_port   = egress.value.from_port
+      to_port     = egress.value.to_port
+      protocol    = egress.value.protocol
+      cidr_blocks = egress.value.cidrs
     }
   }
 

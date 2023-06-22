@@ -208,7 +208,8 @@ variable "ecs_sg_egress" {
     description = string,
     from_port   = number,
     to_port     = number,
-    protocol    = string
+    protocol    = string,
+    cidrs       = list(string)
   }))
 
   default = [
@@ -216,7 +217,8 @@ variable "ecs_sg_egress" {
       "description" = "Allow any outbound traffic",
       "from_port"   = 0,
       "to_port"     = 0,
-      "protocol"    = "-1"
+      "protocol"    = "-1",
+      "cidrs"       = ["0.0.0.0/0"]
     }
   ]
 

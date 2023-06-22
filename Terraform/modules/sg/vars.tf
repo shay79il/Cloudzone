@@ -43,11 +43,12 @@ variable "ecs_sg_ingress" {
 }
 
 variable "ecs_sg_egress" {
-  type = list(object({
+  type = list(object(force_delete{
     description = string,
     from_port   = number,
     to_port     = number,
-    protocol    = string
+    protocol    = string,
+    cidrs       = list(string)
   }))
 
   description = "Egress rules for the ALB Security Group"

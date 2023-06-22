@@ -1,7 +1,12 @@
-data "aws_ecr_repository" "ecr" {
-  name = "cloudzone-lab"
-}
+# data "aws_ecr_repository" "ecr" {
+#   name = "cloudzone-lab"
+# }
+resource "aws_ecr_repository" "ecr" {
+  name                 = "cloudzone-lab"
+  image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
+}
 resource "aws_vpc_endpoint" "ecr" {
 
   vpc_id       = var.vpc_id

@@ -43,7 +43,7 @@ variable "ecs_sg_ingress" {
 }
 
 variable "ecs_sg_egress" {
-  type = list(object(force_delete{
+  type = list(object({
     description = string,
     from_port   = number,
     to_port     = number,

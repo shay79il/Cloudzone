@@ -8,14 +8,14 @@ variable "aws_cred_paths" {
 }
 
 variable "aws_profile" {
-  type = string
+  type    = string
   default = "AdminUser"
 
   description = "AWS profile name"
 }
 
 variable "aws_account_id" {
-  type = string
+  type    = string
   default = "428855609275"
 
   description = "Allowed AWS account ID"

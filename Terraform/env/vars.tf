@@ -14,13 +14,6 @@ variable "aws_profile" {
   description = "AWS profile name"
 }
 
-variable "aws_account_id" {
-  type    = string
-  default = "shay79ilaws"
-
-  description = "Allowed AWS account ID"
-}
-
 variable "region" {
   type    = string
   default = "us-east-1"

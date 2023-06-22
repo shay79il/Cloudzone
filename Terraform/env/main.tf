@@ -69,7 +69,7 @@ module "ecs" {
 
   env                = var.env
   region             = var.region
-  aws_account_id     = var.aws_account_id
+  aws_account_id     = data.aws_caller_identity.current.account_id
   execution_role_arn = module.iam.aws_iam_role_arn
 
   image_name     = var.image_name

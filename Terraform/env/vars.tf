@@ -8,15 +8,15 @@ variable "aws_cred_paths" {
 }
 
 variable "aws_profile" {
-  type    = string
-  default = "CloudZone"
+  type = string
+  default = "AdminUser"
 
   description = "AWS profile name"
 }
 
 variable "aws_account_id" {
-  type    = string
-  default = "791073934047"
+  type = string
+  default = "428855609275"
 
   description = "Allowed AWS account ID"
 }

@@ -28,6 +28,11 @@ variable "private_subnet_ids" {
   description = "Private subnets IDs"
 }
 
+variable "private_rt_id" {
+  type        = string
+  description = "Private RT ID"
+}
+
 variable "security_group_ids" {
   type        = list(string)
   description = "Security Group IDs"

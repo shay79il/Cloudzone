@@ -58,6 +58,7 @@ module "ecr" {
   vpc_endpoint_type   = var.vpc_endpoint_type
   private_dns_enabled = var.private_dns_enabled
   private_subnet_ids  = module.vpc.private_subnet_ids
+  private_rt_id       = module.vpc.private_rt_id
   security_group_ids  = [module.sg.sg_id_ecs]
 
   depends_on = [module.sg]
